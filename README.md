@@ -4,11 +4,13 @@ A beginner-friendly console-based Java application developed for an Object-Orien
 
 ---
 
-## Student Information
+## Student & Repository Information
 
 - **Student Name:** YARASU HARSHAVARDHAN REDDY
 - **Email ID:** yarasuharshavardhan.reddy.s.113@kalvium.community
 - **Squad:** 113
+- **GitHub Repository:** [https://github.com/yarasuharsha/VehicleRentalSystem_OOPS](https://github.com/yarasuharsha/VehicleRentalSystem_OOPS)
+
 
 ---
 
@@ -275,9 +277,10 @@ java -cp out Main
 
 ### Step-by-Step Instructions
 
-1. Open PowerShell and navigate to the project directory:
+1. Open PowerShell and clone or navigate to the project directory:
    ```powershell
-   cd "C:\Users\yaras\OneDrive\Desktop\OOPS MicroProject\VehicleRentalSystem"
+   git clone https://github.com/yarasuharsha/VehicleRentalSystem_OOPS.git
+   cd VehicleRentalSystem
    ```
 
 2. Compile all source files into the `out` directory:
