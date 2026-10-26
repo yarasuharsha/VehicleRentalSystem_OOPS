@@ -24,38 +24,29 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         RentalService service = new RentalService();
 
-        int choice = -1;
-
         System.out.println("\n**********************************************");
         System.out.println("*   SMART VEHICLE RENTAL MANAGEMENT SYSTEM   *");
         System.out.println("**********************************************");
 
-        do {
-            // Display menu
-            System.out.println("\n=============== MAIN MENU ===============");
-            System.out.println("  1. Add Vehicle");
-            System.out.println("  2. Display All Vehicles");
-            System.out.println("  3. Display Available Vehicles");
-            System.out.println("  4. Register Customer");
-            System.out.println("  5. Rent a Vehicle");
-            System.out.println("  6. Return a Vehicle");
-            System.out.println("  7. View Rental Details");
-            System.out.println("  8. View All Customers");
-            System.out.println("  9. Search Vehicles");
-            System.out.println(" 10. Mark Vehicle Under Maintenance");
-            System.out.println(" 11. Mark Vehicle Repaired");
-            System.out.println("  0. Exit");
-            System.out.println("==========================================");
-            System.out.print("  Enter your choice: ");
+        boolean running = true;
 
-            // Input validation for menu choice
-            if (!scanner.hasNextInt()) {
-                System.out.println("\n  Error: Please enter a valid number.");
-                scanner.next();
+        while (running) {
+            // Display menu exactly once per iteration
+            displayMainMenu();
+
+            String line = scanner.nextLine().trim();
+
+            if (line.isEmpty()) {
                 continue;
             }
-            choice = scanner.nextInt();
-            scanner.nextLine();
+
+            int choice;
+            try {
+                choice = Integer.parseInt(line);
+            } catch (NumberFormatException e) {
+                System.out.println("\n  Error: Please enter a valid number (0-11).");
+                continue;
+            }
 
             switch (choice) {
 
@@ -106,15 +97,36 @@ public class Main {
                 case 0:
                     System.out.println("\n  Thank you for using the Vehicle Rental System!");
                     System.out.println("  Goodbye!\n");
+                    running = false;
                     break;
 
                 default:
                     System.out.println("\n  Error: Invalid choice. Please enter 0-11.");
             }
-
-        } while (choice != 0);
+        }
 
         scanner.close();
+    }
+
+    /**
+     * Displays the complete main application menu.
+     */
+    private static void displayMainMenu() {
+        System.out.println("\n=============== MAIN MENU ===============");
+        System.out.println("  1. Add Vehicle");
+        System.out.println("  2. Display All Vehicles");
+        System.out.println("  3. Display Available Vehicles");
+        System.out.println("  4. Register Customer");
+        System.out.println("  5. Rent a Vehicle");
+        System.out.println("  6. Return a Vehicle");
+        System.out.println("  7. View Rental Details");
+        System.out.println("  8. View All Customers");
+        System.out.println("  9. Search Vehicles");
+        System.out.println(" 10. Mark Vehicle Under Maintenance");
+        System.out.println(" 11. Mark Vehicle Repaired");
+        System.out.println("  0. Exit");
+        System.out.println("==========================================");
+        System.out.print("  Enter your choice: ");
     }
 
     /**
@@ -130,13 +142,14 @@ public class Main {
         System.out.println("    4. Scooter");
         System.out.print("  Enter type (1/2/3/4): ");
 
-        if (!scanner.hasNextInt()) {
-            System.out.println("\n  Error: Invalid input.");
-            scanner.next();
+        String typeStr = scanner.nextLine().trim();
+        int type;
+        try {
+            type = Integer.parseInt(typeStr);
+        } catch (NumberFormatException e) {
+            System.out.println("\n  Error: Invalid input. Please enter 1, 2, 3, or 4.");
             return;
         }
-        int type = scanner.nextInt();
-        scanner.nextLine();
 
         if (type < 1 || type > 4) {
             System.out.println("\n  Error: Invalid vehicle type.");
@@ -168,26 +181,50 @@ public class Main {
         switch (type) {
             case 1:
                 System.out.print("  Enter Number of Seats: ");
-                int seats = scanner.nextInt();
-                scanner.nextLine();
+                String seatsStr = scanner.nextLine().trim();
+                int seats;
+                try {
+                    seats = Integer.parseInt(seatsStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("\n  Error: Number of seats must be a valid number.");
+                    return;
+                }
                 vehicle = new Car(vehicleId, brand, model, regNumber, seats);
                 break;
             case 2:
                 System.out.print("  Enter Engine CC: ");
-                int cc = scanner.nextInt();
-                scanner.nextLine();
+                String ccStr = scanner.nextLine().trim();
+                int cc;
+                try {
+                    cc = Integer.parseInt(ccStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("\n  Error: Engine CC must be a valid number.");
+                    return;
+                }
                 vehicle = new Bike(vehicleId, brand, model, regNumber, cc);
                 break;
             case 3:
                 System.out.print("  Enter Cargo Capacity (in tons): ");
-                double capacity = scanner.nextDouble();
-                scanner.nextLine();
+                String capStr = scanner.nextLine().trim();
+                double capacity;
+                try {
+                    capacity = Double.parseDouble(capStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("\n  Error: Cargo capacity must be a valid number.");
+                    return;
+                }
                 vehicle = new Van(vehicleId, brand, model, regNumber, capacity);
                 break;
             case 4:
                 System.out.print("  Enter Engine CC: ");
-                int scooterCC = scanner.nextInt();
-                scanner.nextLine();
+                String scooterCCStr = scanner.nextLine().trim();
+                int scooterCC;
+                try {
+                    scooterCC = Integer.parseInt(scooterCCStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("\n  Error: Engine CC must be a valid number.");
+                    return;
+                }
                 vehicle = new Scooter(vehicleId, brand, model, regNumber, scooterCC);
                 break;
             default:
@@ -241,13 +278,14 @@ public class Main {
         String vehicleId = scanner.nextLine().trim();
 
         System.out.print("  Enter number of days: ");
-        if (!scanner.hasNextInt()) {
+        String daysStr = scanner.nextLine().trim();
+        int days;
+        try {
+            days = Integer.parseInt(daysStr);
+        } catch (NumberFormatException e) {
             System.out.println("\n  Error: Please enter a valid number of days.");
-            scanner.next();
             return;
         }
-        int days = scanner.nextInt();
-        scanner.nextLine();
 
         service.rentVehicle(customerId, vehicleId, days);
     }
@@ -274,13 +312,14 @@ public class Main {
         System.out.println("  3. Search by Vehicle Type (Car, Bike, Scooter, Van)");
         System.out.print("  Enter your choice (1/2/3): ");
 
-        if (!scanner.hasNextInt()) {
+        String searchChoiceStr = scanner.nextLine().trim();
+        int searchChoice;
+        try {
+            searchChoice = Integer.parseInt(searchChoiceStr);
+        } catch (NumberFormatException e) {
             System.out.println("\n  Error: Invalid input. Please enter 1, 2, or 3.");
-            scanner.next();
             return;
         }
-        int searchChoice = scanner.nextInt();
-        scanner.nextLine();
 
         switch (searchChoice) {
             case 1:
