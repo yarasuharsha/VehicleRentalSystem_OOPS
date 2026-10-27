@@ -27,9 +27,10 @@ A beginner-friendly console-based Java application developed for an Object-Orien
 7. [Rental Calculation & Pricing](#rental-calculation--pricing)
 8. [How to Compile and Run](#how-to-compile-and-run)
 9. [Example Usage Workflow](#example-usage-workflow)
-10. [Testing and Verification](#testing-and-verification)
-11. [Limitations](#limitations)
-12. [Future Improvements](#future-improvements)
+10. [Application Screenshots](#application-screenshots)
+11. [Testing and Verification](#testing-and-verification)
+12. [Limitations](#limitations)
+13. [Future Improvements](#future-improvements)
 
 ---
 
@@ -324,6 +325,28 @@ java -cp out Main
    - Attempting to rent `V201` shows an error preventing rental.
    - Select Option 11 with ID `V201` to complete repairs and restore availability.
 8. **Exit (Option 0):** Cleanly exit the system.
+
+---
+
+## Application Screenshots
+
+Genuine terminal screenshots captured from the running application are organized in the [`screenshots/`](screenshots/) directory:
+
+| Screenshot | Operation Shown | Description |
+|---|---|---|
+| [`main_menu.jpg`](screenshots/main_menu.jpg) | Main Menu & Startup | Compilation (`javac`), execution, application header banner, and options 0–11 |
+| [`display_all_vehicles.jpg`](screenshots/display_all_vehicles.jpg) | Option 2 | Displays all 8 pre-loaded vehicles (Cars, Bikes, Vans, Scooters) with details and rates |
+| [`register_customer_and_view_all.jpg`](screenshots/register_customer_and_view_all.jpg) | Options 4 & 8 | Registering customer accounts (`c100`, `c101`) and listing all registered customers |
+| [`rent_vehicle.jpg`](screenshots/rent_vehicle.jpg) | Option 5 | Renting Scooter `V401` to customer `c100` for 4 days with calculated rental receipt |
+| [`view_rental_details.jpg`](screenshots/view_rental_details.jpg) | Option 7 | Viewing transaction history and billing log for Rental `R1` |
+| [`search_vehicles.jpg`](screenshots/search_vehicles.jpg) | Option 9 | Searching vehicle fleet by type (`Car`) returning matched vehicles |
+| [`mark_vehicle_under_maintenance.jpg`](screenshots/mark_vehicle_under_maintenance.jpg) | Option 10 | Tagging vehicle `V201` under maintenance with reason `"Engine Damage"` |
+| [`add_vehicle_validation_and_success.jpg`](screenshots/add_vehicle_validation_and_success.jpg) | Option 1 | Duplicate Vehicle ID rejection (`V202`), followed by adding new Bike `V203` |
+| [`display_available_vehicles.jpg`](screenshots/display_available_vehicles.jpg) | Option 3 | Filtered available fleet excluding rented and maintenance vehicles |
+| [`return_vehicle_and_validation.jpg`](screenshots/return_vehicle_and_validation.jpg) | Option 6 | Error handling for unrented vehicle, followed by successful return of `V401` |
+| [`display_available_vehicles_after_return.jpg`](screenshots/display_available_vehicles_after_return.jpg) | Option 3 | Available vehicles list updated after returning `V401` (includes new bike `V203`) |
+| [`display_all_vehicles_maintenance_status.jpg`](screenshots/display_all_vehicles_maintenance_status.jpg) | Option 2 | Fleet inventory view showing `V201` with status `Under Maintenance` and reason |
+| [`mark_vehicle_repaired_and_available.jpg`](screenshots/mark_vehicle_repaired_and_available.jpg) | Option 11 & 3 | Restoring `V201` to `Available` status and verifying all 9 vehicles available |
 
 ---
 

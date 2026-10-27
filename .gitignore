@@ -8,7 +8,6 @@ bin/
 
 # Reports and documentation drafts
 report/
-screenshots/
 *.pdf
 *.docx
 
